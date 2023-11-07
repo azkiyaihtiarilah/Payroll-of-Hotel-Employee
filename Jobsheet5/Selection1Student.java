@@ -8,8 +8,10 @@ public class Selection1Student {
         System.out.print("Input a Number = ");
         int number = input01.nextInt();
 
-        String result = (number % 2 == 0) ? (number + " is an even number!") : (number + " is an odd number!");
-
-        System.out.println(result);
+        if(number%2 == 0){
+            System.out.println(number+" is an even number!");
+        }else{
+            System.out.println(number+ "is an odd number!");
+        }
     }
 }
