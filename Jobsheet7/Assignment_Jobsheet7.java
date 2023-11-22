@@ -62,8 +62,15 @@ public class Assignment_Jobsheet7 {
             continueInput = sc.next().charAt(0);
             sc.nextLine(); // Membersihkan newline karakter
 
+            if (continueInput == 'n' || continueInput == 'N') {
+                break; // Menghentikan loop jika pengguna memilih 'n' atau 'N'
+            } else if (continueInput != 'y' && continueInput != 'Y') {
+                System.out.println("Invalid input. Exiting program.");
+                return; // Menghentikan program jika input tidak valid
+            }
+
             i++;
-        } while (continueInput == 'y' || continueInput == 'Y');
+        } while (true);
 
         System.out.println("Thank you for using the Payroll System!");
     }
