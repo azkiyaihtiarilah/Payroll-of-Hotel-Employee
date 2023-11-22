@@ -11,51 +11,61 @@ public class Assignment_Jobsheet7 {
         do {
             System.out.print("Enter the number of employees: ");
             numEmployees = sc.nextInt();
-            sc.nextLine(); // Membersihkan newline karakter
+            // Membersihkan newline karakter
+            sc.nextLine(); 
+
+            // Membuat array untuk menyimpan data karyawan
+            String[] names = new String[numEmployees];
+            String[] positions = new String[numEmployees];
+            int[] salaryPositions = new int[numEmployees];
+            int[] workingHours = new int[numEmployees];
+            int[] overtimeHours = new int[numEmployees];
+            int[] bonusesArray = new int[numEmployees];
+            int[] deductionsArray = new int[numEmployees];
+            int[] insuranceArray = new int[numEmployees];
+            double[] gajiPokokArray = new double[numEmployees];
+            double[] gajiKotorArray = new double[numEmployees];
+            double[] gajiBersihArray = new double[numEmployees];
 
             for (int j = 0; j < numEmployees; j++) {
-                String name, position;
-                int salary_position, working_hours, overtime, bonuses, deductions, insurance;
-                double gaji_pokok, gaji_kotor, gaji_bersih;
-
                 System.out.println("\nInput Employee " + (j + 1) + " Data:");
                 System.out.print("Input Employee Name \t: ");
-                name = sc.nextLine();
+                names[j] = sc.nextLine();
                 System.out.print("Input Employee Position (director, manager, staff): ");
-                position = sc.nextLine();
+                positions[j] = sc.nextLine();
                 System.out.print("Input Salary Position \t: ");
-                salary_position = sc.nextInt();
+                salaryPositions[j] = sc.nextInt();
                 System.out.print("Input Working Hours \t: ");
-                working_hours = sc.nextInt();
+                workingHours[j] = sc.nextInt();
                 System.out.print("Input Overtime Hours \t: ");
-                overtime = sc.nextInt();
+                overtimeHours[j] = sc.nextInt();
                 System.out.print("Input Bonuses \t\t: ");
-                bonuses = sc.nextInt();
+                bonusesArray[j] = sc.nextInt();
                 System.out.print("Input Deductions \t: ");
-                deductions = sc.nextInt();
+                deductionsArray[j] = sc.nextInt();
                 System.out.print("Input Insurance \t: ");
-                insurance = sc.nextInt();
+                insuranceArray[j] = sc.nextInt();
                 sc.nextLine(); // Membersihkan newline karakter
 
-                if (position.equalsIgnoreCase("director")) {
-                    gaji_pokok = salary_position * working_hours;
-                } else if (position.equalsIgnoreCase("manager")) {
-                    gaji_pokok = salary_position * working_hours + overtime + bonuses;
-                } else if (position.equalsIgnoreCase("staff")) {
-                    gaji_pokok = salary_position * working_hours + overtime;
+                if (positions[j].equalsIgnoreCase("director")) {
+                    gajiPokokArray[j] = salaryPositions[j] * workingHours[j];
+                } else if (positions[j].equalsIgnoreCase("manager")) {
+                    gajiPokokArray[j] = salaryPositions[j] * workingHours[j] + overtimeHours[j] + bonusesArray[j];
+                } else if (positions[j].equalsIgnoreCase("staff")) {
+                    gajiPokokArray[j] = salaryPositions[j] * workingHours[j] + overtimeHours[j];
                 } else {
                     System.out.println("Invalid position, setting gaji_pokok to 0.");
-                    gaji_pokok = 0;
+                    gajiPokokArray[j] = 0;
                 }
 
-                gaji_kotor = gaji_pokok + bonuses;
-                gaji_bersih = gaji_kotor - deductions - insurance;
+                gajiKotorArray[j] = gajiPokokArray[j] + bonusesArray[j];
+                gajiBersihArray[j] = gajiKotorArray[j] - deductionsArray[j] - insuranceArray[j];
 
                 System.out.println("\nPayroll Hotel Employee " + (j + 1) + " Data:");
-                System.out.println("Name of Hotel Employee \t: " + name);
-                System.out.println("Current Position \t\t: " + position);
-                System.out.println("Total Salary \t \t\t: " + gaji_kotor);
-                System.out.println("Total Net Salary \t\t: " + gaji_bersih);
+                System.out.println("Name of Hotel Employee \t: " + names[j]);
+                System.out.println("Current Position \t\t: " + positions[j]);
+                System.out.println("Total Salary \t \t\t: " + gajiKotorArray[j]);
+                System.out.println("Total Net Salary \t\t: " + gajiBersihArray[j]);
             }
 
             System.out.print("\nDo you want to input data for more employees? (y/n): ");
