@@ -83,5 +83,6 @@ public class Assignment_Jobsheet7 {
         } while (true);
 
         System.out.println("Thank you for using the Payroll System!");
+        System.out.println("Selamat bekerja");
     }
 }
