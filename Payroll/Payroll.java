@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Payroll {
     // Array untuk menyimpan data karyawan
-    public static String[][] dataKaryawan = new String[10][5]; // Ukuran array dapat disesuaikan
+    public static String[][] dataKaryawan = new String[10][5];
     public static int jumlahKaryawan = 0;
 
     public static void main(String[] args) {
@@ -56,7 +56,7 @@ public class Payroll {
         int jumlahInput = scanner.nextInt();
 
         for (int i = 0; i < jumlahInput; i++) {
-            scanner.nextLine(); // Membersihkan newline dari buffer
+            scanner.nextLine(); // Enter 2x
             System.out.println("\nMasukkan data karyawan ke-" + (i + 1) + ":");
             System.out.print("Nama: ");
             dataKaryawan[jumlahKaryawan][0] = scanner.nextLine();
@@ -79,9 +79,7 @@ public class Payroll {
             String jabatan = dataKaryawan[i][1];
             double gajiPokok = Double.parseDouble(dataKaryawan[i][2]);
 
-            // Placeholder for additional calculations (bonus, deductions, etc.) if needed
-
-            // Example: Calculate monthly total (assuming 12 months)
+            // Calculate monthly total (assuming 12 months)
             double gajiBulanan = gajiPokok * 12;
 
             // Display the monthly salary for each employee
@@ -115,7 +113,6 @@ public class Payroll {
         }
     }
 
-    // Fungsinya untuk login dan mengembalikan jabatan
     public static String login() {
         Scanner scanner = new Scanner(System.in);
 
@@ -127,7 +124,7 @@ public class Payroll {
         for (String[] karyawan : dataKaryawan) {
             if (username.equalsIgnoreCase(karyawan[0]) && password.equals("password")) {
                 System.out.println("\n    Login berhasil!");
-                return karyawan[1]; // Mengembalikan jabatan
+                return karyawan[1];
             }
         }
 
